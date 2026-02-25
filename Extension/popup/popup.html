@@ -1,0 +1,92 @@
+<html>
+    <head>
+        <title>AccessBridge</title>
+        <link rel="stylesheet" href="./switch.css">
+        <link rel="stylesheet" href="./popup.css">
+        <link rel="stylesheet" href="./modal.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    </head>
+    <body>
+        <h1>AccessBridge</h1>
+        <!--
+        switch copy
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span>
+        </label>
+
+        toggleCheckbox copy
+        <label class="toggleCheckbox large">
+            Speech to Text
+            <input type="checkbox">
+        </label>
+        -->
+
+        <div>
+
+            <p class="large">
+                <strong> 
+                    Font Size <i class="material-icons">format_size</i>
+                </strong>
+            </p>
+
+            <label for="font-size-slider">Font size</label>
+            <input type="range" name="font-size-slider" min="12" max="50" value="18">
+
+        </div>
+        <div>
+            
+            <p class="large">
+                <strong> 
+                    Color Style <i class="material-icons">format_color_fill</i>
+                </strong>
+            </p>
+            <button id="myBtn" class="large">Select Style</button>
+
+        </div>
+        <br>
+        <div>
+            
+            <button class="toggleButton large"><strong>Contrast Mode <i class="material-icons">remove_red_eye</i></strong></button>
+            <button class="toggleButton large"><strong>Dyslexia Mode <i class="material-icons">chrome_reader_mode</i></strong></button>
+
+        </div>
+        
+        <p class="large"><strong>Accessiblity </strong><i class="material-icons">accessibility</i></p>
+
+        <label class="toggleCheckbox large">
+            Picture to Speech
+            <input type="checkbox">
+        </label>
+        <label class="toggleCheckbox large">
+            Speech to Text
+            <input type="checkbox">
+        </label>
+        <label class="toggleCheckbox large">
+            Text to Speech
+            <input type="checkbox">
+        </label>
+
+        <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h3>Background Colors</h3>
+                <div class="buttonsContainer">
+                    <button class="colorButton" style="color: white; background-color: black;">White on black</button>
+                    <button class="colorButton" style="color: black; background-color: white;">Black on white</button>
+                    <button class="colorButton" style="color: white; background-color: red;">White on red</button>
+                    <button class="colorButton" style="color: white; background-color: green;">White on green</button>
+                    <button class="colorButton" style="color: white; background-color: blue;">White on blue</button>
+                    <button class="colorButton" style="color: black; background-color: yellow;">Black on yellow</button>
+                    <button class="colorButton" style="color: yellow; background-color: black;">Yellow on black</button>
+                </div>
+            </div>
+
+        </div>
+
+        <script src="./popup.js"></script>
+
+    </body>
+</html>
