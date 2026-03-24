@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "AccessBridge",
+  "description": "Local accessibility controls for web pages.",
+  "version": "1.0.0",
+  "action": {
+    "default_title": "AccessBridge",
+    "default_popup": "Extension/popup-wrapper.html"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "Extension/content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}

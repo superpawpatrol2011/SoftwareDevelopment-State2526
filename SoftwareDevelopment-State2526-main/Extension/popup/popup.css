@@ -1,0 +1,423 @@
+
+:root {
+    --defaultFontSize: 18px;
+    --panel-border: #1f2937;
+    --panel-bg-top: rgba(255, 252, 245, 0.98);
+    --panel-bg-bottom: rgba(243, 236, 225, 0.98);
+    --button-border: #134e4a;
+    --button-top: #f4fffd;
+    --button-bottom: #dff4ef;
+    --button-text: #12323a;
+    --status-text: #52606d;
+    --brand: #0f766e;
+    --brand-strong: #115e59;
+    --slider-track: rgba(15, 118, 110, 0.18);
+    --slider-fill: #0f766e;
+    --slider-thumb: #ffffff;
+    --slider-thumb-border: #134e4a;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    overflow: hidden;
+    background: transparent;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 16px;
+    font-size: var(--defaultFontSize);
+    font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+    color: #1f2937;
+    background: linear-gradient(180deg, var(--panel-bg-top) 0%, var(--panel-bg-bottom) 100%);
+    border: 0;
+    overflow: hidden;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
+    animation: popup-enter 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+body,
+button,
+label,
+p,
+strong,
+span {
+    color: inherit;
+}
+
+body.popup-dyslexic,
+body.popup-dyslexic button,
+body.popup-dyslexic label,
+body.popup-dyslexic p,
+body.popup-dyslexic span:not(.brandMark),
+body.popup-dyslexic strong,
+body.popup-dyslexic h1 {
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+
+body.popup-dyslexic .material-icons,
+body.popup-dyslexic i.material-icons,
+body.popup-dyslexic svg,
+body.popup-dyslexic .brandMark,
+body.popup-dyslexic .brandMark * {
+    font-family: "Material Icons" !important;
+}
+
+body.popup-dyslexic svg,
+body.popup-dyslexic .brandMark,
+body.popup-dyslexic .brandMark * {
+    font-family: initial !important;
+}
+
+body > h1,
+body > div,
+body > p,
+body > label,
+body > br {
+    position: relative;
+    z-index: 1;
+}
+
+body > .modal {
+    z-index: 1000;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    z-index: 0;
+}
+
+@keyframes popup-enter {
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.985);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes rise-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h1 {
+    margin: 0 0 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--brand);
+}
+
+.brandMark {
+    width: 30px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: linear-gradient(180deg, #115e59 0%, #134e4a 100%);
+    color: #f8fffd;
+    box-shadow: 0 8px 18px rgba(15, 118, 110, 0.18);
+    flex: 0 0 auto;
+}
+
+.brandMark svg {
+    width: 18px;
+    height: 18px;
+    display: block;
+}
+
+div {
+    margin-bottom: 12px;
+}
+
+body > div,
+body > p.large,
+body > label.toggleCheckbox {
+    animation: rise-in 260ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+body > div:nth-of-type(1) { animation-delay: 30ms; }
+body > div:nth-of-type(2) { animation-delay: 60ms; }
+body > div:nth-of-type(3) { animation-delay: 90ms; }
+body > p.large { animation-delay: 110ms; }
+body > label.toggleCheckbox:nth-of-type(1) { animation-delay: 140ms; }
+body > label.toggleCheckbox:nth-of-type(2) { animation-delay: 170ms; }
+body > label.toggleCheckbox:nth-of-type(3) { animation-delay: 200ms; }
+
+p.large {
+    margin: 0 0 8px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--brand);
+}
+
+.sectionTitle,
+.buttonLabel {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.sectionTitle {
+    justify-content: space-between;
+}
+
+.buttonLabel {
+    position: relative;
+    justify-content: center;
+    text-align: center;
+    padding-left: 24px;
+}
+
+.buttonLabel .material-icons {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.material-icons {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    font-size: 18px;
+    line-height: 1;
+    vertical-align: middle;
+    flex: 0 0 auto;
+}
+
+label[for="font-size-slider"] {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 11px;
+    color: var(--status-text);
+}
+
+input[name="font-size-slider"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 14px;
+    border-radius: 999px;
+    background:
+        linear-gradient(90deg, var(--slider-fill) 0%, var(--slider-fill) var(--slider-progress, 17%), var(--slider-track) var(--slider-progress, 17%), var(--slider-track) 100%);
+    outline: none;
+    box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.08);
+}
+
+input[name="font-size-slider"]::-webkit-slider-runnable-track {
+    height: 14px;
+    border-radius: 999px;
+    background: transparent;
+}
+
+input[name="font-size-slider"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 22px;
+    height: 22px;
+    margin-top: -4px;
+    border-radius: 50%;
+    background: var(--slider-thumb);
+    border: 2px solid var(--slider-thumb-border);
+    box-shadow: 0 6px 12px rgba(15, 23, 42, 0.18);
+}
+
+input[name="font-size-slider"]::-moz-range-track {
+    height: 14px;
+    border-radius: 999px;
+    background: var(--slider-track);
+}
+
+input[name="font-size-slider"]::-moz-range-progress {
+    height: 14px;
+    border-radius: 999px;
+    background: var(--slider-fill);
+}
+
+input[name="font-size-slider"]::-moz-range-thumb {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--slider-thumb);
+    border: 2px solid var(--slider-thumb-border);
+    box-shadow: 0 6px 12px rgba(15, 23, 42, 0.18);
+}
+
+.large {
+    font-size: 12px;
+}
+
+.toggleButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(50% - 4px);
+    min-height: 42px;
+    border: 2px solid var(--button-border);
+    background: linear-gradient(180deg, var(--button-top) 0%, var(--button-bottom) 100%);
+    color: var(--button-text);
+    cursor: pointer;
+    border-radius: 16px;
+    padding: 10px 12px;
+    transition: transform .18s ease, filter .18s ease, box-shadow .18s ease;
+    font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+    font-weight: 800;
+    box-shadow: 0 8px 18px rgba(15, 118, 110, 0.12);
+}
+
+.toggleButton:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.02);
+}
+
+.toggleButton strong {
+    font: inherit;
+}
+
+.toggleCheckbox {
+    background: linear-gradient(180deg, var(--button-top) 0%, var(--button-bottom) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    cursor: pointer;
+    padding: 10px 12px;
+    width: 100%;
+    min-height: 42px;
+    border: 2px solid var(--button-border);
+    border-radius: 16px;
+    color: var(--button-text);
+    box-shadow: 0 8px 18px rgba(15, 118, 110, 0.12);
+    margin-bottom: 8px;
+    transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+}
+
+.toggleCheckbox:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.02);
+}
+
+.toggleCheckbox input {
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    flex: 0 0 auto;
+    border: 2px solid #111827;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.85);
+    display: inline-grid;
+    place-items: center;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.28);
+    transition: transform .18s ease, border-color .18s ease, background-color .18s ease;
+}
+
+.toggleCheckbox input::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--brand);
+    box-shadow: 0 0 0 1px #111827;
+    transform: scale(0);
+    transition: transform .16s ease;
+}
+
+.toggleCheckbox input:checked {
+    background: color-mix(in srgb, var(--button-top) 72%, white 28%);
+    border-color: #111827;
+}
+
+.toggleCheckbox input:checked::before {
+    transform: scale(1);
+}
+
+.toggleCheckbox input:hover {
+    transform: scale(1.05);
+}
+
+.toggleCheckbox input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--panel-bg-top) 70%, white 30%), 0 0 0 4px var(--brand);
+}
+
+.buttonsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+}
+
+.colorButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: calc(50% - 5px);
+    min-height: 74px;
+    font-size: 14px;
+    font-weight: 800;
+    border-radius: 16px;
+    border: 2px solid var(--panel-border);
+    transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.colorButton:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 24px rgba(15, 23, 42, 0.18);
+}
+
+#myBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 42px;
+    border: 2px solid var(--button-border);
+    background: linear-gradient(180deg, var(--button-top) 0%, var(--button-bottom) 100%);
+    color: var(--button-text);
+    border-radius: 16px;
+    cursor: pointer;
+    font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+    font-weight: 800;
+    box-shadow: 0 8px 18px rgba(15, 118, 110, 0.12);
+    transition: transform .18s ease, filter .18s ease, box-shadow .18s ease;
+}
+
+#myBtn:hover {
+    transform: translateY(-1px);
+}
+
+#myBtn .buttonLabel {
+    padding-left: 26px;
+}
